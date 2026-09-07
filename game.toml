@@ -1,0 +1,53 @@
+# Autofilled by tools/new_project_layout/probe_disc.py from your legal dump.
+# Review before shipping. Runtime quirks / overlay seeds still need hand work.
+
+[game]
+name = "Bloody Roar"
+id = "SCUS-94199"
+players = 2
+exe = "disc/SCUS_941.99"
+disc = "disc/Bloody Roar (USA).cue"
+load_address = "0x80120000"
+entry_pc = "0x801291E4"
+text_size = "0x00091000"
+stack_base = "0x801FFFF0"
+
+# Digests are for data Track 01 (first BINARY FILE / TRACK 01).
+[prepare_disc]
+out_dir = "disc"
+bin_name = "Bloody Roar (USA) (Track 1).bin"
+cue_name = "Bloody Roar (USA).cue"
+boot_exe = "SCUS_941.99"
+known_sizes = [575630832]
+known_md5 = [
+  "805e3006c614855e2855811f0c5ac78a",
+]
+known_sha1 = [
+  "a09a6647a445315709e86fbb4abf36ff2eb8ae6b",
+]
+known_crc32 = [
+  "b8f3aadb",
+]
+
+[recompiler]
+seeds = "seeds/ghidra_funcs.txt"
+out_dir = "generated"
+strict = true
+
+[runtime]
+window_title = "Bloody Roar Recompiled"
+memcard_dir = "saves"
+
+[video]
+renderer = "opengl"
+aspect_ratio = "4:3"
+
+[controller]
+default_mode = "digital"
+
+# Online mount gate: digests + track count + optional TOC fingerprint
+# (see docs/NETPLAY.md).
+[netplay]
+require_cue = true
+required_tracks = 2
+required_disc_fp = "7b924dc99639e053620a110fd91f975731b610bd9289026283d7252d9ae762c5"
